@@ -1,6 +1,8 @@
 package com.example.dummy;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -33,14 +35,25 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.NotesViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull NotesViewHolder holder, int position) {
-        Notes notes = notesArrayList.get(position);
+        Notes notes = notesArrayList.get(holder.getAdapterPosition());
         holder.title.setText(notes.title);
         holder.description.setText(notes.description);
-
         holder.itemView.setOnClickListener((v)->{
             Intent intent = new Intent(context,AddNodeActivity.class);
-            intent.putExtra("position", position);
+            intent.putExtra("position", holder.getAdapterPosition());
             context.startActivity(intent);
+            notifyDataSetChanged();
+        });
+
+        holder.itemView.setOnLongClickListener((v)->{
+            new AlertDialog.Builder(context).setTitle("Delete this note?").setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    DataBase.notesList.remove(holder.getAdapterPosition());
+                    notifyDataSetChanged();
+                }
+            }).setNegativeButton("No", null).show();
+            return true;
         });
 
     }

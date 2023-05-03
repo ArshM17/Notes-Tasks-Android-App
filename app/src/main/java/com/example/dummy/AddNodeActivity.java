@@ -34,7 +34,7 @@ public class AddNodeActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Notes note = new Notes(titleInput.getText().toString(), descriptionInput.getText().toString());
                 if(pos == -1){
-                    DataBase.notesList.add(note);
+                    DataBase.notesList.add(0,note);
                     Toast.makeText(AddNodeActivity.this, "Note Saved", Toast.LENGTH_SHORT).show();
                 }else{
                     DataBase.notesList.get(pos).setTitle(note.title);

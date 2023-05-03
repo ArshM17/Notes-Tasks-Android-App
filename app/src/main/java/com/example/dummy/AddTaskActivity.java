@@ -35,7 +35,7 @@ public class AddTaskActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Task task = new Task(taskInput.getText().toString());
                 if(pos == -1){
-                    DataBase.taskList.add(task);
+                    DataBase.taskList.add(0,task);
                     Toast.makeText(AddTaskActivity.this, "Task Saved", Toast.LENGTH_SHORT).show();
                 }else{
                     DataBase.taskList.get(pos).setTask(task.task);

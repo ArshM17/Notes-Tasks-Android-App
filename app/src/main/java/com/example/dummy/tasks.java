@@ -40,7 +40,6 @@ public class tasks extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-//        dataInitialize();
         btn = view.findViewById(R.id.task_add_button);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,33 +49,10 @@ public class tasks extends Fragment {
         });
         recyclerViewTasks = view.findViewById(R.id.recyclerViewTasks);
         recyclerViewTasks.setLayoutManager(new LinearLayoutManager(getContext()));
-//      recyclerViewTasks.setLayoutManager(new GridLayoutManager(getContext(), 2));
         recyclerViewTasks.setHasFixedSize(true);
         RVAdapter2 taskAdapter = new RVAdapter2(getContext(),DataBase.taskList);
         recyclerViewTasks.setAdapter(taskAdapter);
         taskAdapter.notifyDataSetChanged();
     }
-
-//    private void dataInitialize() {
-//        tasksArrayList = new ArrayList<>();
-//
-//        taskName = new String[]{
-//                getString(R.string.d1),
-//                getString(R.string.d2),
-//                getString(R.string.d3),
-//                getString(R.string.d4),
-//                getString(R.string.d5),
-//                getString(R.string.d6),
-//                getString(R.string.d7),
-//                getString(R.string.d8),
-//                getString(R.string.d9),
-//                getString(R.string.d10)
-//        };
-//
-//        for(int i = 0; i<taskName.length;i++){
-//            Task task = new Task(taskName[i]);
-//            tasksArrayList.add(task);
-//        }
-//    }
 
 }

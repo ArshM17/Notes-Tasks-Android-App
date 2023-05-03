@@ -7,28 +7,30 @@
     android:id="@+id/parent"
     app:cardCornerRadius="10dp"
     app:cardElevation="10dp"
-    android:layout_marginLeft="10dp"
-    android:layout_marginBottom="10dp">
+    android:layout_marginLeft="20dp"
+    android:layout_marginBottom="10dp"
+    >
+
     <RelativeLayout
-        android:layout_width="match_parent"
+        android:layout_width="166dp"
         android:layout_height="match_parent"
-        android:padding="10dp"
-        >
+        android:padding="10dp">
+
         <TextView
-            android:layout_width="180dp"
-            android:layout_height="wrap_content"
             android:id="@+id/note_title"
-            android:textStyle="bold"
-            android:text="TITLE"
-            android:textSize="16sp"/>
-        <TextView
             android:layout_width="180dp"
             android:layout_height="wrap_content"
+            android:text="TITLE"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
             android:id="@+id/note_description"
-            android:text="DESCRIPTION"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
             android:layout_below="@+id/note_title"
             android:maxHeight="200dp"
-            />
+            android:text="DESCRIPTION" />
     </RelativeLayout>
 
 
