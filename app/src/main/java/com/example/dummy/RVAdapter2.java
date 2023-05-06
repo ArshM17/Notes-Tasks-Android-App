@@ -38,6 +38,9 @@ public class RVAdapter2 extends RecyclerView.Adapter<RVAdapter2.TaskViewHolder> 
     public void onBindViewHolder(@NonNull TaskViewHolder holder, int position) {
         Task tasks = taskArrayList.get(holder.getAdapterPosition());
         holder.text.setText(tasks.task);
+//        holder.task.setChecked(tasks.isDone);
+
+//        System.out.println(tasks.isDone);
         holder.itemView.setOnClickListener((v)->{
             Intent intent = new Intent(context,AddTaskActivity.class);
             intent.putExtra("position", holder.getAdapterPosition());
@@ -50,6 +53,7 @@ public class RVAdapter2 extends RecyclerView.Adapter<RVAdapter2.TaskViewHolder> 
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
                     DataBase.taskList.remove(holder.getAdapterPosition());
+                    PrefConfig.saveTaskArrayList(context, DataBase.taskList);
                     notifyDataSetChanged();
                 }
             }).setNegativeButton("No", null).show();

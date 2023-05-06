@@ -1,7 +1,8 @@
 package com.example.dummy;
 
 public class Task {
-    String task;
+    public String task;
+    public Boolean isDone;
 
     public String getTask() {
         return task;
@@ -11,7 +12,8 @@ public class Task {
         this.task = task;
     }
 
-    public Task(String task) {
+    public Task(String task, Boolean isDone) {
         this.task = task;
+        this.isDone = isDone;
     }
 }

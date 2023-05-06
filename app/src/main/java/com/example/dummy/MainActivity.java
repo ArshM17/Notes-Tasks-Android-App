@@ -1,19 +1,16 @@
 package com.example.dummy;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.viewpager.widget.ViewPager;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.os.Bundle;
-import android.widget.TableLayout;
 
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
 import java.util.ArrayList;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -24,6 +21,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        DataBase.taskList = PrefConfig.getTaskArrayList(this);
+        DataBase.notesList = PrefConfig.getNotesArrayList(this);
+        if(DataBase.notesList==null){
+            DataBase.notesList = new ArrayList<>();
+        }
+        if(DataBase.taskList==null){
+            DataBase.taskList = new ArrayList<>();
+        }
         TabLayout tabLayout = findViewById(R.id.tablayout);
         ViewPager2 viewPager2 = findViewById(R.id.viewpager);
 

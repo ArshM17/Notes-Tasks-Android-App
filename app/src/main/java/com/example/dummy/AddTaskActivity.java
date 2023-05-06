@@ -10,7 +10,6 @@ import android.widget.Toast;
 
 import com.google.android.material.button.MaterialButton;
 
-import org.w3c.dom.Text;
 
 public class AddTaskActivity extends AppCompatActivity {
 
@@ -33,12 +32,14 @@ public class AddTaskActivity extends AppCompatActivity {
         saveBtn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Task task = new Task(taskInput.getText().toString());
+                Task task = new Task(taskInput.getText().toString(), false);
                 if(pos == -1){
                     DataBase.taskList.add(0,task);
+                    PrefConfig.saveTaskArrayList(getApplicationContext(), DataBase.taskList);
                     Toast.makeText(AddTaskActivity.this, "Task Saved", Toast.LENGTH_SHORT).show();
                 }else{
                     DataBase.taskList.get(pos).setTask(task.task);
+                    PrefConfig.saveTaskArrayList(getApplicationContext(), DataBase.taskList);
                     Toast.makeText(AddTaskActivity.this, "Task Updated", Toast.LENGTH_SHORT).show();
                 }
                 finish();

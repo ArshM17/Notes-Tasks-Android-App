@@ -50,6 +50,7 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.NotesViewHolder> {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
                     DataBase.notesList.remove(holder.getAdapterPosition());
+                    PrefConfig.saveNotesArrayList(context, DataBase.notesList);
                     notifyDataSetChanged();
                 }
             }).setNegativeButton("No", null).show();
